@@ -4,12 +4,14 @@ from io import StringIO
 #import pandas as pd
 from configparser import ConfigParser
 import json
+import os
 #import re
 
 def get_data(user_id):
     config = ConfigParser()
     
-    config.read("/home/ec2-user/environment/core/data_feed_config.ini")
+#    config.read("/home/ec2-user/environment/core/data_feed_config.ini")
+    config.read(os.path.join(os.path.dirname(__file__), 'data_feed_config.ini'))
     
     cluster_id = config["GLOBAL"]["cluster_id"]
     db_user = config["GLOBAL"]["db_user"]

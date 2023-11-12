@@ -13,13 +13,10 @@ def get_data(user_id):
 #    config.read("/home/ec2-user/environment/core/data_feed_config.ini")
     config.read(os.path.join(os.path.dirname(__file__), 'data_feed_config.ini'))
     
-    cluster_id = config["GLOBAL"]["cluster_id"]
     db_user = config["GLOBAL"]["db_user"]
     workgroup = config["GLOBAL"]["workgroup"]
     secarn = config["GLOBAL"]["secret_arn"]
     database = config["GLOBAL"]["database_name"]
-    schema_name = config["GLOBAL"]["schema_name"]
-    table_list = config["GLOBAL"]["tables_to_be_fed_to_llm"].split(',')
     
     client = boto3.client('redshift-data', region_name = 'us-east-1')
     

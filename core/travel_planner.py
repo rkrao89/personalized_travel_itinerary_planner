@@ -32,7 +32,7 @@ def get_data(user_id):
     u.u_age as age, u.u_city as home_city, u.u_country as home_country, u.u_interest as hobbies_interest, u.u_fav_food as favorite_food,
     b.b_city as travel_city, b.b_country as travel_country, b.b_checkin as from_date, b.b_checkout as to_date
     from ext_spectrum.user_profile u
-    join ext_spectrum.hotel_booking; b on b.b_user_id = u.u_user_id
+    join ext_spectrum.hotel_booking b on b.b_user_id = u.u_user_id
     where u.u_user_id = {user_id}
     ORDER BY b.b_checkin;
     """

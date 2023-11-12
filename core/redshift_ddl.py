@@ -10,16 +10,12 @@ config = ConfigParser()
     
 #config.read("/home/ec2-user/environment/core/data_feed_config.ini")
 config.read(os.path.join(os.path.dirname(__file__), 'data_feed_config.ini'))
-cluster_id = config["GLOBAL"]["cluster_id"]
 db_user = config["GLOBAL"]["db_user"]
-#workgroup = config["GLOBAL"]["workgroup"]
-workgroup = "redshift-genai-wg-5eff2d70"
-#secarn = config["GLOBAL"]["secret_arn"]
-secarn = "arn:aws:secretsmanager:us-east-2:610113859777:secret:RedshiftServerlessSecret-Qev4NH"
+workgroup = config["GLOBAL"]["workgroup"]
+secarn = config["GLOBAL"]["secret_arn"]
 database = config["GLOBAL"]["database_name"]
-schema_name = config["GLOBAL"]["schema_name"]
-table_list = config["GLOBAL"]["tables_to_be_fed_to_llm"].split(',')
-client = boto3.client('redshift-data', region_name = 'us-east-2')
+region_name = config["GLOBAL"]["region"]
+client = boto3.client('redshift-data', region_name = region_name)
 
 query = f"""
 CREATE external SCHEMA ext_spectrum

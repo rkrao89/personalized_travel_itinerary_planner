@@ -1,3 +1,10 @@
+bedrock-python-sdk
+bedrock-python-sdk.zip
+verification
+
+__pycache__/
+.DS_Store
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
